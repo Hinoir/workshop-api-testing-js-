@@ -1,0 +1,33 @@
+{
+  "name": "workshop-api-testing-js",
+  "version": "1.0.0",
+  "description": "This is a Workshop about Api Testing in JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hinoir/workshop-api-testing-js.git"
+  },
+  "keywords": [
+    "api-testing",
+    "dojo",
+    "practice"
+  ],
+  "author": "[Stevens] <[sivi97a@gmail.com]> ([Hinoir])",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Hinoir/workshop-api-testing-js/issues"
+  },
+  "homepage": "https://github.com/Hinoir/workshop-api-testing-js#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "http-status-codes": "^1.4.0",
+    "mocha": "^7.0.1"
+  },
+  "dependencies": {
+    "superagent": "^5.2.1",
+    "superagent-promise": "^1.1.0"
+  }
+}

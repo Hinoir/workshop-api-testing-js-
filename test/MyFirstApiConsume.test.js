@@ -26,7 +26,7 @@ describe('First Api Tests', () => {
   });
 
   it('Consume POST Service', async () => {
-    agent.post('https://petstore.swagger.io/v2/user').send(
+    const response = await agent.post('https://petstore.swagger.io/v2/user').send(
       {
         "id": 0,
         "username": "prueba",
@@ -37,12 +37,13 @@ describe('First Api Tests', () => {
         "phone": "huawei",
         "userStatus": 0
       }
-    ).then(callback => statusCode.OK)
-      .catch(errorCallback => statusCode.BAD_REQUEST)
+    );
+    expect(response.status).to.equal(statusCode.OK);
+    expect(response.body).to.have.property('origin');
   });
 
   it('Consume PUT Service', async () => {
-    agent.put('https://petstore.swagger.io/v2/user/prueba').send(
+    const response = await agent.put('https://petstore.swagger.io/v2/user/prueba').send(
       {
         "id": 0,
         "username": "prueba",
@@ -53,14 +54,16 @@ describe('First Api Tests', () => {
         "phone": "huawei",
         "userStatus": 0
       }
-    ).then(callback => statusCode.OK)
-      .catch(errorCallback => statusCode.BAD_REQUEST)
+    );
+    expect(response.status).to.equal(statusCode.OK);
+    expect(response.body).to.have.property('origin');
   });
 
   it('Consume DELETE Service', async () => {
-    agent.delete('https://petstore.swagger.io/v2/user/prueba')
-      .then(callback => statusCode.OK)
-      .catch(errorCallback => statusCode.BAD_REQUEST)
+    const response = await agent.delete('https://petstore.swagger.io/v2/user/prueba');
+
+    expect(response.status).to.equal(statusCode.OK);
+    expect(response.body).to.have.property('origin');
   });
 });
 

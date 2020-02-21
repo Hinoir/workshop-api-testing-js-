@@ -26,45 +26,40 @@ describe('First Api Tests', () => {
   });
 
   it('Consume POST Service', async () => {
-    const response = await agent.post('https://petstore.swagger.io/v2/user').send(
-      {
-        "id": 0,
-        "username": "prueba",
-        "firstName": "stevens",
-        "lastName": "monedero",
-        "email": "sivi97a@gmail.com",
-        "password": "password",
-        "phone": "huawei",
-        "userStatus": 0
-      }
-    );
+    const response = await agent.post('https://httpbin.org/post');
+
     expect(response.status).to.equal(statusCode.OK);
     expect(response.body).to.have.property('origin');
   });
 
   it('Consume PUT Service', async () => {
-    const response = await agent.put('https://petstore.swagger.io/v2/user/prueba').send(
-      {
-        "id": 0,
-        "username": "prueba",
-        "firstName": "stevens",
-        "lastName": "monedero",
-        "email": "sivi97a@gmail.com",
-        "password": "password",
-        "phone": "huawei",
-        "userStatus": 0
-      }
-    );
+    const response = await agent.put('https://httpbin.org/put');
+
     expect(response.status).to.equal(statusCode.OK);
     expect(response.body).to.have.property('origin');
   });
 
   it('Consume DELETE Service', async () => {
-    const response = await agent.delete('https://petstore.swagger.io/v2/user/prueba');
+    const response = await agent.delete('https://httpbin.org/delete');
 
     expect(response.status).to.equal(statusCode.OK);
     expect(response.body).to.have.property('origin');
   });
+
+  it('Consume HEAD Service', async () => {
+    const response = await agent.head('https://httpbin.org/get');
+
+    expect(response.status).to.equal(statusCode.OK);
+  });
+
+  it('Consume PATCH Service', async () => {
+    const response = await agent.patch('https://httpbin.org/patch');
+
+    expect(response.status).to.equal(statusCode.OK);
+    expect(response.body).to.have.property('origin');
+  });
+
+
 });
 
 

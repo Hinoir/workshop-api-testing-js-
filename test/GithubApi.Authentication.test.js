@@ -5,13 +5,13 @@ const { expect } = require('chai');
 const urlBase = 'https://api.github.com';
 const githubUserName = 'Hinoir';
 const repository = 'workshop-api-testing-js-';
+const accesToken = process.env.ACCESS_TOKEN;
 
 describe('Github Api Test', () => {
   describe('Authentication', () => {
     it('Via OAuth2 Tokens by Header', async () => {
-      console.log(process.env.ACCESS_TOKEN);
       const response = await agent.get(`${urlBase}/repos/${githubUserName}/${repository}`)
-        .auth('token', process.env.ACCESS_TOKEN)
+        .auth('token', accesToken)
         .set('User-Agent', 'agent');
 
       expect(response.status).to.equal(statusCode.OK);
@@ -19,7 +19,7 @@ describe('Github Api Test', () => {
     });
 
     it('Via OAuth2 Tokens by parameter', () => agent.get(`${urlBase}/repos/${githubUserName}/${repository}`)
-      .query(`access_token=${process.env.ACCESS_TOKEN}`)
+      .query(`access_token=${accesToken}`)
       .set('User-Agent', 'agent')
       .then((response) => {
         expect(response.status).to.equal(statusCode.OK);
